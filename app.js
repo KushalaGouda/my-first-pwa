@@ -8,11 +8,15 @@ if ('serviceWorker' in navigator) {
 // Handle install prompt
 let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
+const exitBtn = document.getElementById('exitBtn');
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    installBtn.style.display = 'block'; // show install button when prompt is available
+
+    // Show both install and exit buttons when prompt is available
+    installBtn.style.display = 'block';
+    exitBtn.style.display = 'block';
 });
 
 installBtn.addEventListener('click', () => {
@@ -24,7 +28,7 @@ installBtn.addEventListener('click', () => {
             } else {
                 console.log('User dismissed install');
             }
-            deferredPrompt = null; // clear after use
+            deferredPrompt = null;
         });
     }
 });
@@ -40,10 +44,10 @@ function exitApp() {
             } else {
                 console.log('User dismissed install');
             }
-            deferredPrompt = null; // clear after use
+            deferredPrompt = null;
         });
     } else {
-        // If the prompt isn't available, just try to close the window
+        // If already installed or prompt not available, just close
         window.open('', '_self').close();
     }
 }
