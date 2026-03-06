@@ -60,20 +60,14 @@ background:red;
 function showWelcome(){
 alert("Welcome to my first PWA!");
 }
-
 function exitApp(){
-
-/* try to close window */
-window.open('','_self').close();
-
-/* fallback */
-setTimeout(()=>{
-window.location.href="about:blank";
-},200);
-
+  window.location.href = "about:blank";
 }
+
+
 
 </script>
 
 </body>
 </html>
+
