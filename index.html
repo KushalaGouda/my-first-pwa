@@ -8,6 +8,7 @@
 <meta name="theme-color" content="#317EFB">
 
 <style>
+
 body{
 display:flex;
 flex-direction:column;
@@ -18,12 +19,16 @@ font-size:24px;
 text-align:center;
 }
 
-/* normal buttons */
+/* BIG buttons */
 button{
-margin:10px;
-padding:10px 20px;
-font-size:18px;
+margin:15px;
+padding:15px 35px;
+font-size:28px;   /* h2 size */
 cursor:pointer;
+border:none;
+background:#317EFB;
+color:white;
+border-radius:8px;
 }
 
 /* exit button bottom right */
@@ -31,9 +36,10 @@ cursor:pointer;
 position:fixed;
 bottom:20px;
 right:20px;
+background:red;
 }
-</style>
 
+</style>
 </head>
 
 <body>
@@ -42,7 +48,6 @@ right:20px;
 <p>This app works offline and installed.</p>
 
 <button onclick="showWelcome()">Welcome</button>
-<button onclick="showOk()">OK</button>
 
 <button id="installBtn" style="display:none;">Install App</button>
 
@@ -51,18 +56,23 @@ right:20px;
 <script src="app.js"></script>
 
 <script>
+
 function showWelcome(){
 alert("Welcome to my first PWA!");
 }
 
-function showOk(){
-alert("OK button pressed!");
+function exitApp(){
+
+/* try to close window */
+window.open('','_self').close();
+
+/* fallback */
+setTimeout(()=>{
+window.location.href="about:blank";
+},200);
+
 }
 
-function exitApp(){
-window.close();
-window.location.href="about:blank";
-}
 </script>
 
 </body>
