@@ -1,43 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MyApp</title>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#317EFB">
-  <style>
-  body {
-    display: flex;
-    justify-content: center;   /* horizontal center */
-    align-items: center;       /* vertical center */
-    height: 100vh;             /* full screen height */
-    font-size: 24px;           /* bigger font */
-    text-align: center;        /* center text */
-  }
+<meta charset="UTF-8">
+<title>MyApp</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#317EFB">
+
+<style>
+body{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-size:24px;
+text-align:center;
+}
+
+/* normal buttons */
+button{
+margin:10px;
+padding:10px 20px;
+font-size:18px;
+cursor:pointer;
+}
+
+/* exit button bottom right */
+#exitBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+}
 </style>
 
 </head>
+
 <body>
-  <h1>WELCOME!</h1>
-  <p>This app works offline and installed.</p>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('Service Worker registered'));
-    }
-    if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/sw.js")
-      .then(() => console.log("Service Worker registered"))
-      .catch(err => console.error("Service Worker failed:", err));
-  }
-  </script>
-  <script src="app.js"></script>
-  <button id="installBtn" style="display:none;">Install App</button>
-</body>
+
+<h1>WELCOME!</h1>
+<p>This app works offline and installed.</p>
+
+<button onclick="showWelcome()">Welcome</button>
+<button onclick="showOk()">OK</button>
+
+<button id="installBtn" style="display:none;">Install App</button>
+
+<button id="exitBtn" onclick="exitApp()">Exit</button>
+
+<script src="app.js"></script>
+
+<script>
+function showWelcome(){
+alert("Welcome to my first PWA!");
+}
+
+function showOk(){
+alert("OK button pressed!");
+}
+
+function exitApp(){
+window.close();
+window.location.href="about:blank";
+}
+</script>
+
 </body>
 </html>
-
-
-
-
-
