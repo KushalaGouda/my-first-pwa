@@ -6,8 +6,6 @@ navigator.serviceWorker.register('service-worker.js')
 .catch(err=>console.log('Service Worker registration failed:',err));
 
 }
-
-
 // Handle install prompt
 let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
@@ -41,3 +39,4 @@ deferredPrompt=null;
 }
 
 });
+
